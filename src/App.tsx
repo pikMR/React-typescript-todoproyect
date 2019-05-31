@@ -1,21 +1,22 @@
-import React, { Component } from 'react'
-import '@ionic/core/css/core.css'
-import '@ionic/core/css/ionic.bundle.css'
-import { IonApp } from '@ionic/react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Home from './components/Home'
-class App extends Component {
-	render() {
-		return (
-			<IonApp>
-				<Router>
-					<Switch>
-						<Route path="/" component={Home} />
-					</Switch>
-				</Router>
-			</IonApp>
-		)
-	}
-}
+import React from 'react';
+import '@ionic/core/css/core.css';
+import '@ionic/core/css/ionic.bundle.css';
+import {IonApp} from '@ionic/react';
+import store from "./store/store";
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {Provider} from 'react-redux';
+import AppStack from "./pages/AppStack";
 
-export default App
+const App = () => (
+  <Provider store={store}>
+    <Router>
+      <div id="app">
+        <IonApp>
+            <Route path="/" component={AppStack} />
+        </IonApp>
+      </div>
+    </Router>
+  </Provider>
+);
+
+export default App;
