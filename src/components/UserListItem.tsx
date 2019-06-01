@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { RootState, actions } from '../store';
 import { withRouter, RouteComponentProps } from 'react-router';
 import {IonLabel, IonItemSliding, IonItem, IonItemOptions, IonItemOption, IonAlert, IonAvatar} from '@ionic/react';
-import { Fish } from '../store/fishes/types';
+import { User } from '../store/users/types';
 import { AlertButton } from '@ionic/react';
 
 type Props = RouteComponentProps<{}> & typeof mapDispatchToProps & ReturnType<typeof mapStateToProps> & {
-  fish: Fish;
+  user: User;
   listType: "all" | "favorites";
 }
 
@@ -18,7 +18,7 @@ type State = {
   alertButtons: (AlertButton | string)[];
 }
 
-class FishListItem extends React.Component<Props, State> {
+class UserListItem extends React.Component<Props, State> {
   ionItemSlidingRef: React.RefObject<any>;
   defaultState: State = {
     showAlert: false,
@@ -43,14 +43,14 @@ class FishListItem extends React.Component<Props, State> {
     if (this.ionItemSlidingRef.current) this.ionItemSlidingRef.current.close();
   }
 
-  addFavoriteFish = () => {
-    if (this.props.favoriteFishes.indexOf(this.props.fish.id) !== - 1) {
+  addFavoriteUser = () => {
+    if (this.props.favoriteUsers.indexOf(this.props.user.id) !== - 1) {
       // woops, they already favorited it! What shall we do!?
       // prompt them to remove it
-      this.removeFavoriteFish('Favorite already added')();
+      this.removeFavoriteUser('Favorite already added')();
     } else {
-      // remember this fish as a user favorite
-      this.props.addFavorite(this.props.fish.id);
+      // remember this user as a user favorite
+      this.props.addFavorite(this.props.user.id);
 
       // create an alert instance
       this.setState({
@@ -66,11 +66,11 @@ class FishListItem extends React.Component<Props, State> {
     }
   }
 
-  removeFavoriteFish = (title: string) => () => {
+  removeFavoriteUser = (title: string) => () => {
     this.setState({
       showAlert: true,
       alertHeader: title,
-      alertMessage: 'Would you like to remove this fish from your favorites?',
+      alertMessage: 'Would you like to remove this user from your favorites?',
       alertButtons: [
         {
           text: 'Cancel',
@@ -79,7 +79,7 @@ class FishListItem extends React.Component<Props, State> {
         {
           text: 'Remove',
           handler: () => {
-            this.props.removeFavorite(this.props.fish.id);
+            this.props.removeFavorite(this.props.user.id);
             this.dismissAlert();
           }
         }
@@ -87,34 +87,34 @@ class FishListItem extends React.Component<Props, State> {
     });
   }
 
-  navigateToFish = (fishId: number) => () => {
-    this.props.history.push(`/fishes/fishes/${fishId}`);
+  navigateToUser = (userId: number) => () => {
+    this.props.history.push(`/users/users/${userId}`);
   }
 
   render() {
     return (
-      <IonItemSliding ref={this.ionItemSlidingRef} class={'track-' + this.props.fish.tags[0].toLowerCase()}>
+      <IonItemSliding ref={this.ionItemSlidingRef} class={'track-' + this.props.user.tags[0].toLowerCase()}>
         <IonAlert
           isOpen={this.state.showAlert}
           header={this.state.alertHeader}
           buttons={this.state.alertButtons}
           onDidDismiss={this.dismissAlert}
         ></IonAlert>
-        <IonItem button onClick={this.navigateToFish(this.props.fish.id)}>
+        <IonItem button onClick={this.navigateToUser(this.props.user.id)}>
           <IonAvatar slot="start">
-            <img src={process.env.PUBLIC_URL + this.props.fish.pic} alt={this.props.fish.name}/>
+            <img src={process.env.PUBLIC_URL + this.props.user.pic} alt={this.props.user.name}/>
           </IonAvatar>
           <IonLabel>
-            <h3>{this.props.fish.name}</h3>
+            <h3>{this.props.user.name}</h3>
           </IonLabel>
         </IonItem>
         <IonItemOptions>
           { this.props.listType === "favorites" ?
-            <IonItemOption color="danger" onClick={this.removeFavoriteFish('Remove Favorite')}>
+            <IonItemOption color="danger" onClick={this.removeFavoriteUser('Remove Favorite')}>
               Remove
             </IonItemOption>
             :
-            <IonItemOption color="favorite" onClick={this.addFavoriteFish}>
+            <IonItemOption color="favorite" onClick={this.addFavoriteUser}>
               Favorite
             </IonItemOption>
           }
@@ -125,15 +125,15 @@ class FishListItem extends React.Component<Props, State> {
 }
 
 const mapStateToProps = (state: RootState) => ({
-  favoriteFishes: state.users.favoriteFishes
+  favoriteUsers: state.users.favoriteUsers
 });
 
 const mapDispatchToProps = {
-  addFavorite: (fishId: number) => actions.users.addFavorite(fishId),
-  removeFavorite: (fishId: number) => actions.users.removeFavorite(fishId),
+  addFavorite: (userId: number) => actions.users.addFavorite(userId),
+  removeFavorite: (userId: number) => actions.users.removeFavorite(userId),
 }
 
 export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(FishListItem));
+)(UserListItem));

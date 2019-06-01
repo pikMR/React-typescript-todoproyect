@@ -12,7 +12,7 @@ type State = {
   trackFilters: string[];
 }
 
-export default class FishListFilter extends Component<Props, State> {
+export default class UserListFilter extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
@@ -51,7 +51,7 @@ export default class FishListFilter extends Component<Props, State> {
               <IonButton onClick={this.props.dismissModal}>Cancel</IonButton>
             </IonButtons>
             <IonTitle>
-              Filter Fishes
+              Filter Users
             </IonTitle>
             <IonButtons slot="end">
               <IonButton onClick={this.applyFilters} strong>Done</IonButton>

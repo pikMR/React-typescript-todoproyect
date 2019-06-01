@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { RootState, selectors, actions } from '../store';
-import FishList from '../components/FishList';
-import FishListFilter from '../components/FishListFilter';
+import UserList from '../components/UserList';
+import UserListFilter from '../components/UserListFilter';
 import { withRouter, RouteComponentProps } from "react-router";
 import { IonModal, IonLoading, IonToast, IonIcon, IonHeader, IonToolbar, IonButtons, IonMenuButton,
     IonSegment, IonSegmentButton, IonButton, IonSearchbar, IonContent, IonRefresher, IonRefresherContent, IonFab, IonFabList, IonFabButton, IonAlert } from '@ionic/react';
@@ -127,12 +127,12 @@ class UsersPage extends Component<Props, State> {
             onDidDismiss={() => this.setState(() => ({ 'isRefreshing': false }))}
           ></IonToast>
 
-          <FishList
+          <UserList
             users={this.props.allFiltered}
             listType={"all"}
             hidden={this.state.segment === "favorites"}
           />
-          <FishList
+          <UserList
             users={this.props.favoritesFiltered}
             listType={"favorites"}
             hidden={this.state.segment === "all"}
@@ -143,7 +143,7 @@ class UsersPage extends Component<Props, State> {
           isOpen={this.state.showFilterModal}
           onDidDismiss={() => this.setState(() => ({ showFilterModal: false}))}
         >
-          <FishListFilter
+          <UserListFilter
             filteredTags={this.props.filteredTags}
             allTags={this.props.allTags}
             updateTrackFilters={this.props.updateTrackFilters}
@@ -182,7 +182,7 @@ const mapStateToProps = (state: RootState) => ({
   allFiltered: selectors.users.allFiltered(state.users),
   favoritesFiltered: selectors.users.favoritesFiltered(state.users),
   searchText: state.users.searchText,
-  favoriteFishes: state.users.favoriteFishes,
+  favoriteUsers: state.users.favoriteUsers,
   filteredTags: state.users.tagFilters,
   allTags: selectors.users.allTags(state.users)
 });

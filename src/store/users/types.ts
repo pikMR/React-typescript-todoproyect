@@ -1,4 +1,4 @@
-export interface Fish {
+export interface User {
     id: number,
     name: string,
     pic: string,
@@ -7,13 +7,13 @@ export interface Fish {
     tags: string[]
   }
 
-  export interface FishState {
+  export interface UserState {
     searchText: string;
     tagFilters: string[];
-    users: Fish[];
-    favoriteFishes: number[];
+    users: User[];
+    favoriteUsers: number[];
   }
 
-  export interface FishGroup {
-    users: Fish[]
+  export interface UserGroup {
+    users: User[]
   }

@@ -1,15 +1,15 @@
 import React from 'react';
-import {Fish} from '../store/fishes/types';
-import FishListItem from './FishListItem';
+import {User} from '../store/users/types';
+import UserListItem from './UserListItem';
 import {IonList, IonListHeader} from '@ionic/react';
 
 interface Props {
-  users: Fish[]
+  users: User[]
   hidden: boolean;
   listType: "all" | "favorites"
 }
 
-const FishList: React.FunctionComponent<Props> = ({users, hidden, listType }) => {
+const UserList: React.FunctionComponent<Props> = ({users, hidden, listType }) => {
   if (users.length === 0) {
     return (
       <IonList style={hidden ? {display: 'none'} : {}}>
@@ -22,10 +22,10 @@ const FishList: React.FunctionComponent<Props> = ({users, hidden, listType }) =>
 
   return (
     <IonList style={hidden ? {display: 'none'} : {}}>
-          { users.map((user: Fish, fishIndex: number) => (
-            <FishListItem
-              key={`${fishIndex}`}
-              fish={user}
+          { users.map((user: User, userIndex: number) => (
+            <UserListItem
+              key={`${userIndex}`}
+              user={user}
               listType={listType}
             />
           ))}
@@ -33,4 +33,4 @@ const FishList: React.FunctionComponent<Props> = ({users, hidden, listType }) =>
   );
 };
 
-export default FishList;
+export default UserList;

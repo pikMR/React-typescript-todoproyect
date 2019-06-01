@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose, Middleware } from 'redux';
 import { fetchLocationsMiddleware } from './locations/middleware';
-import { fetchFishesMiddleware } from './fishes/middleware';
+import { fetchUsersMiddleware } from './users/middleware';
 import { fetchBranchesMiddleware } from './branches/middleware';
 
 import rootReducer from './root-reducer';
@@ -9,7 +9,7 @@ const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ||
 
 const middlewares: Middleware[] = [
   fetchLocationsMiddleware,
-  fetchFishesMiddleware,
+  fetchUsersMiddleware,
   fetchBranchesMiddleware
 ];
 

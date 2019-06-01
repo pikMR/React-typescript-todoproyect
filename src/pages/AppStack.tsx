@@ -6,7 +6,7 @@ import { Route, Redirect } from 'react-router';
 import UsersPage from "./UsersPage";
 import BranchList from "./BranchList";
 import BranchDetail from "./BranchDetail";
-import FishDetail from "./FishDetail";
+import UserDetail from "./UserDetail";
 
 const AppStack: React.FC = () => (
   <IonPage>
@@ -26,7 +26,7 @@ const AppStack: React.FC = () => (
         <Route path="/:tab(users)" component={UsersPage} exact={true} />
         <Route path="/:tab(branches)" component={BranchList} exact={true} />
         <Route path="/:tab(branches)/branch/:id" component={BranchDetail} />
-        <Route path="/:tab(users|branches)/users/:id" component={FishDetail} />
+        <Route path="/:tab(users|branches)/users/:id" component={UserDetail} />
         <Route path="/:tab(map)" component={MapView} />
         <Route path="/:tab(about)" component={About} />
       </IonRouterOutlet>

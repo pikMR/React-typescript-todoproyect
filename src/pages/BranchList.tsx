@@ -8,16 +8,16 @@ import {
     IonGrid, IonCol, IonRow, IonButton, IonHeader, IonContent, IonToolbar, IonButtons, IonTitle
 } from '@ionic/react';
 import {Branch} from '../store/branches/types';
-import {Fish} from '../store/fishes/types';
+import {User} from '../store/users/types';
 
 
 interface ItemProps {
     branch: Branch;
-    branchFishes: Fish[];
+    branchUsers: User[];
     history: History;
 }
 
-const BranchItem = ({branch, branchFishes, history}: ItemProps) => {
+const BranchItem = ({branch, branchUsers, history}: ItemProps) => {
     function openBranchShare(branch: Branch) {
     }
 
@@ -58,13 +58,13 @@ const BranchItem = ({branch, branchFishes, history}: ItemProps) => {
                 <h2>This branch stocks:</h2>
 
                 <IonList>
-                    {branchFishes.map(fish => (
+                    {branchUsers.map(user => (
                         <IonItem
-                            href={`/branches/fishes/${fish.id}`}
-                            key={fish.name}
+                            href={`/branches/users/${user.id}`}
+                            key={user.name}
                             onClick={goToLink}
                         >
-                            <h3>{fish.name}</h3>
+                            <h3>{user.name}</h3>
                         </IonItem>
                     ))}
                 </IonList>
@@ -117,7 +117,7 @@ const BranchList = ({branches, users, history}: ListProps) => (
                                 <BranchItem
                                     branch={branch}
                                     history={history}
-                                    branchFishes={users.filter(fish => fish.branchIds.indexOf(branch.id) !== -1)}
+                                    branchUsers={users.filter(user => user.branchIds.indexOf(branch.id) !== -1)}
                                 />
                             </IonCol>
                         )}

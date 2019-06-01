@@ -5,7 +5,7 @@ export default class Tabs extends Component {
   render() {
     return (
       <IonTabs>
-        <IonTab tab="fishes">Fish Content</IonTab>
+        <IonTab tab="users">User Content</IonTab>
         <IonTab tab="branches">Branches Content</IonTab>
         <IonTab tab="map">Map Content</IonTab>
         <IonTab tab="about">About Content</IonTab>
@@ -15,9 +15,9 @@ export default class Tabs extends Component {
           <IonLabel>Acceso</IonLabel>
           <IonIcon name="login"></IonIcon>
         </IonTabButton>
-          <IonTabButton tab="fishes">
+          <IonTabButton tab="users">
             <IonLabel>Usuarios</IonLabel>
-            <IonIcon name="fishes"></IonIcon>
+            <IonIcon name="users"></IonIcon>
           </IonTabButton>
           <IonTabButton tab="branches">
             <IonLabel>Mi Perfil</IonLabel>

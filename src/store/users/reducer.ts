@@ -1,15 +1,15 @@
 import * as users from './actions';
 import { ActionType, getType } from 'typesafe-actions';
-import { FishState } from './types';
+import { UserState } from './types';
 
-const defaultState: FishState = {
+const defaultState: UserState = {
   searchText: '',
   tagFilters: [],
   users: [],
-  favoriteFishes: []
+  favoriteUsers: []
 }
 
-export default (state = defaultState, action: ActionType<typeof users>): FishState => {
+export default (state = defaultState, action: ActionType<typeof users>): UserState => {
   switch (action.type) {
   case getType(users.setSearchText):
     return {
@@ -39,7 +39,7 @@ export default (state = defaultState, action: ActionType<typeof users>): FishSta
       tagFilters: action.payload
     };
   case getType(users.addFavorite):
-    const updatedFavoriteFishes = state.favoriteFishes.concat(action.payload).reduce((updatedList, item) => {
+    const updatedFavoriteUsers = state.favoriteUsers.concat(action.payload).reduce((updatedList, item) => {
         if (updatedList.indexOf(item) === -1) {
           updatedList.push(item);
         }
@@ -47,19 +47,19 @@ export default (state = defaultState, action: ActionType<typeof users>): FishSta
       }, <number[]>[])
     return {
       ...state,
-      favoriteFishes: updatedFavoriteFishes
+      favoriteUsers: updatedFavoriteUsers
     };
   case getType(users.removeFavorite):
     return {
       ...state,
-      favoriteFishes: state.favoriteFishes.filter(fid => fid !== action.payload)
+      favoriteUsers: state.favoriteUsers.filter(fid => fid !== action.payload)
     };
   case getType(users.updateFavoriteFilter):
     return {
       ...state,
-      favoriteFishes: action.payload
+      favoriteUsers: action.payload
     };
-  case getType(users.fetchFishes.success):
+  case getType(users.fetchUsers.success):
     return {
       ...state,
       users: action.payload

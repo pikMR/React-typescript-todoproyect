@@ -18,7 +18,7 @@
   "phone": "+1-541-754-3010"
 }, {
   "id": 3,
-  "name": "Goldfish Treasures",
+  "name": "Golduser Treasures",
   "profilePic": "/assets/img/branches/img003.jpeg",
   "twitter": "ionicframework",
   "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit..",
@@ -27,7 +27,7 @@
   "phone": "+1-541-754-3010"
 }, {
   "id": 4,
-  "name": "Fishkeeping World",
+  "name": "Userkeeping World",
   "profilePic": "/assets/img/branches/img004.jpeg",
   "twitter": "ionicframework",
   "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",

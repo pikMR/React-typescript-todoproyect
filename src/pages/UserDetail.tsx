@@ -3,18 +3,18 @@ import {connect} from 'react-redux';
 import {RouteComponentProps} from 'react-router';
 import {RootState} from '../store';
 import {IonBackButton, IonButtons, IonContent, IonHeader, IonTitle, IonToolbar} from '@ionic/react';
-import './FishDetail.css';
+import './UserDetail.css';
 
 type Props = RouteComponentProps<{ id: string, tab: string }> & ReturnType<typeof mapStateToProps> & {
   goBack: () => void
 };
 
-const FishDetail: React.FC<Props> = ({ users, branches, match, goBack }) => {
+const UserDetail: React.FC<Props> = ({ users, branches, match, goBack }) => {
   const user = users.find(f => f.id === parseInt(match.params.id, 10));
   if (user == null) {
     return null;
   }
-  const fishBranches = branches.filter(b => user.branchIds.indexOf(b.id) !== -1);
+  const userBranches = branches.filter(b => user.branchIds.indexOf(b.id) !== -1);
 
   return (
     <>
@@ -27,7 +27,7 @@ const FishDetail: React.FC<Props> = ({ users, branches, match, goBack }) => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent padding class="fish-detail">
+      <IonContent padding class="user-detail">
         <div className="ion-text-center">
              <img src={user.pic} alt={user.pic}/>
         </div>
@@ -36,7 +36,7 @@ const FishDetail: React.FC<Props> = ({ users, branches, match, goBack }) => {
 
           <p className='branches-list-title'>Found at these branches:</p>
 
-          {fishBranches.map(branch => (
+          {userBranches.map(branch => (
             <h4 key={branch.name}>
               {branch.name}
             </h4>
@@ -55,4 +55,4 @@ const mapStateToProps = (state: RootState) => ({
 
 export default connect(
   mapStateToProps
-)(FishDetail)
+)(UserDetail)
