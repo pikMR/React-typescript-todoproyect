@@ -4,7 +4,7 @@ import {RootState} from '../store';
 import {IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonMenuButton, IonPopover, IonTitle, IonToolbar} from '@ionic/react';
 import './About.css';
 import AboutPopover from '../components/AboutPopover';
-import { IonInput, IonItem, IonLabel,IonToast, IonRow, IonCol, IonAlert } from '@ionic/react';
+import { IonInput, IonItem, IonLabel,IonToast, IonRow, IonCol, IonAlert, IonModal } from '@ionic/react';
 
 type Props = ReturnType<typeof mapStateToProps>
 
@@ -22,7 +22,8 @@ type State = {
     passError: string,
     submitted: boolean,
     showToast: boolean,
-    showAlert:boolean
+    showAlert:boolean,
+    showModal:boolean
 }
 
 class About extends Component<Props, State> {
@@ -44,12 +45,16 @@ class About extends Component<Props, State> {
           showPopover: false,
           showPopoverEvent: null,
           showToast:false,
-          showAlert : false
+          showAlert : false,
+          showModal: false
       };
   }
 
-  password = (event: Event) => {
-      event.preventDefault();
+  password = (e: CustomEvent) => {
+      let valor : string = e.detail.value;
+        this.setState(() => ({
+            pass: valor
+        }));
   }
 
   presentPopover = (e: MouseEvent) => {
@@ -68,18 +73,11 @@ class About extends Component<Props, State> {
 
   emailChange = (e: CustomEvent) => {
     let valor : string = e.detail.value;
-    let invalid : string = this.validateEmail(valor);
-    let isInvalid : boolean = false;
-    if(invalid === ""){
-      isInvalid = true;
-    }
-
-    this.setState((prevState) => ({
-      ...prevState,
-      email: e.detail.value,
-      emailValid: !isInvalid || !isInvalid,
-      emailError: invalid || '',
-      showPopover: isInvalid
+    let mailmessage : string = this.validateEmail(valor);
+    this.setState(() => ({
+        email: valor,
+        emailError: mailmessage,
+        emailValid: (mailmessage === "")
     }));
   }
 
@@ -109,30 +107,32 @@ validatePass = (pass:string) => {
 
 submit = (event:Event) => {
     const state = this.state;
+    const passResult = this.validatePass(state.pass);
+    let pwvalid = false;
     event.preventDefault();
-    if (state.submitted && state.emailValid && state.passValid) {
-      <IonToast
-      isOpen={state.isLogin}
-      onDidDismiss={() => this.setState(() => ({ showToast:true }))}
-      message='Your settings have been saved.'
-      duration={200}
-    >
-    </IonToast>
+
+    if(passResult === ""){
+      pwvalid = true;
+    }
+
+    if (state.emailValid && pwvalid) {
+      this.setState({
+          submitted: true,
+          showAlert:false,
+          showModal:true,
+          passValid: pwvalid,
+          passError: passResult
+      });
+
       //  mobiscroll.toast({ message: (state.isLogin ? 'Login' : 'Signup') + ' success!'});
     } else {
-
-        const emailInvalid = this.validateEmail(state.email);
-        const passInvalid = this.validatePass(state.pass);
-
-
-        this.setState({
-            submitted: true,
-            emailValid: !emailInvalid,
-            emailError: emailInvalid || '',
-            passValid: !passInvalid,
-            passError: passInvalid || '',
-            showAlert:true
-        });
+      this.setState({
+          submitted: false,
+          showAlert: true,
+          showModal:false,
+          passValid: pwvalid,
+          passError: passResult
+      });
     }
 }
 
@@ -167,16 +167,42 @@ submit = (event:Event) => {
   onDidDismiss={() => this.setState(() => ({ showAlert: false }))}
   header={'Alert'}
   subHeader={'Acceso incorrecto'}
-  message={'Introduzca credenciales válidas'}
+  message={this.state.emailValid ? this.state.passError : this.state.emailError}
   buttons={['OK']}
 >
 </IonAlert>
+    <IonModal
+        isOpen={this.state.showModal}
+        onDidDismiss={() => this.setState(() => ({ showModal: false }))}
+      >
+
+      <div className="centerModal">
+      <IonRow align-items-end>
+      <IonCol>
+          <IonButton expand="block" fill="outline">Fichar</IonButton>
+      </IonCol>
+      <IonCol align-self-start>
+      </IonCol>
+      <IonCol>
+          <IonButton expand="block" fill="outline">Ver Tareas</IonButton>
+      </IonCol>
+      <IonCol>
+      </IonCol>
+    </IonRow>
+    </div>
+
+
+        <IonButton onClick={() => this.setState(() => ({ showModal: false }))}>
+          Close Modal
+        </IonButton>
+      </IonModal>
                 <IonContent>
                 {/*-- Input with placeholder --*/}
                     <IonRow>
                       <IonCol align-self-center>
                       <IonInput placeholder="Email" value={this.state.email} onIonChange={this.emailChange}></IonInput>
-                      <IonInput placeholder="Contraseña" value={this.state.pass} type="password"></IonInput>
+                      <IonInput placeholder="Contraseña" value={this.state.pass} type="password" onIonChange={this.password}>
+                      </IonInput>
                       </IonCol>
                     </IonRow>
                     <IonButton size="small" expand="block" fill="outline" onClick={this.submit}>Autenticación</IonButton>
