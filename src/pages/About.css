@@ -33,3 +33,18 @@
       margin: auto;
       top: 0; left: 0; bottom: 0; right: 0;
 }
+
+.inpution {
+  border:2px solid #dedede;
+padding:20px;
+font-size:20px;
+width:100%;
+color:#666;
+-webkit-border-radius:3px;
+-moz-border-radius:3px;
+border-radius:3px;
+outline:none;
+-webkit-transition:border-color 0.2s linear;
+-moz-transition:border-color 0.2s linear;
+transition:border-color 0.2s linear;
+}
