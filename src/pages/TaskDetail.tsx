@@ -3,16 +3,17 @@ import {connect} from 'react-redux';
 import {RouteComponentProps} from 'react-router';
 import {RootState} from '../store';
 import {IonBackButton, IonButtons, IonContent, IonHeader, IonTitle, IonToolbar} from '@ionic/react'
-import './BranchDetail.css';
+import './TaskDetail.css';
+import {Task} from '../store/tasks/types'
 
 type Props = RouteComponentProps<{ id: string, tab: string}> & ReturnType<typeof mapStateToProps> & {
   goBack: () => void;
 };
 
-const BranchDetail: React.FunctionComponent<Props> = ({ branches, match, goBack }) => {
+const TaskDetail: React.FunctionComponent<Props> = ({ tasks, match, goBack }) => {
+  const task = tasks.find(s => s.id === parseInt(match.params.id, 10));
 
-  const branch = branches.find(s => s.id === parseInt(match.params.id, 10));
-  if (!branch) {
+  if (!task) {
     return null;
   }
 
@@ -23,27 +24,27 @@ const BranchDetail: React.FunctionComponent<Props> = ({ branches, match, goBack 
           <IonButtons slot="start">
             <IonBackButton goBack={goBack} defaultHref={`/${match.params.tab}`} />
           </IonButtons>
-          <IonTitle>{branch.name}</IonTitle>
+          <IonTitle>{task.name}</IonTitle>
         </IonToolbar>
       </IonHeader>
 
-      <IonContent padding class="branch-detail branch-page-list">
+      <IonContent padding class="task-detail task-page-list">
         <div>
-          <img src={branch.profilePic} alt={branch.name}/>
+          <img src={task.profilePic} alt={task.name}/>
         </div>
-        <p>{branch.about}</p>
-        <p><strong>Address</strong>: {branch.location}</p>
-        <p><strong>Email</strong>: {branch.email}</p>
-        <p><strong>Phone</strong>: {branch.phone}</p>
+        <p>{task.about}</p>
+        <p><strong>Address</strong>: {task.location}</p>
+        <p><strong>Email</strong>: {task.email}</p>
+        <p><strong>Phone</strong>: {task.phone}</p>
       </IonContent>
     </>
   );
 };
 
 const mapStateToProps = (state: RootState) => ({
-  branches: state.branches.branches
+  tasks: state.tasks.tasks
 });
 
 export default connect(
   mapStateToProps
-)(BranchDetail)
+)(TaskDetail)

@@ -7,21 +7,21 @@ import {
     IonIcon, IonMenuButton, IonCard, IonCardHeader, IonCardContent, IonItem, IonAvatar, IonList,
     IonGrid, IonCol, IonRow, IonButton, IonHeader, IonContent, IonToolbar, IonButtons, IonTitle
 } from '@ionic/react';
-import {Branch} from '../store/branches/types';
+import {Task} from '../store/tasks/types';
 import {User} from '../store/users/types';
 
 
 interface ItemProps {
-    branch: Branch;
-    branchUsers: User[];
+    task: Task;
+    taskUsers: User[];
     history: History;
 }
 
-const BranchItem = ({branch, branchUsers, history}: ItemProps) => {
-    function openBranchShare(branch: Branch) {
+const TaskItem = ({task, taskUsers, history}: ItemProps) => {
+    function openTaskShare(task: Task) {
     }
 
-    function openContact(branch: Branch) {
+    function openContact(task: Task) {
     }
 
     function goToLink(e: MouseEvent) {
@@ -33,34 +33,34 @@ const BranchItem = ({branch, branchUsers, history}: ItemProps) => {
     }
 
     return (
-        <IonCard class="branch-card">
+        <IonCard class="task-card">
             <IonCardHeader>
                 <IonItem
                     button
                     detail={false}
-                    href={`/branches/branch/${branch.id}`}
+                    href={`/tasks/task/${task.id}`}
                     onClick={goToLink}
                 >
                     <IonAvatar slot="start">
-                        <img src={process.env.PUBLIC_URL + branch.profilePic} alt="Branch profile pic"/>
+                        <img src={process.env.PUBLIC_URL + task.profilePic} alt="Task profile pic"/>
                     </IonAvatar>
-                    <strong>{branch.name}</strong>
+                    <strong>{task.name}</strong>
                 </IonItem>
             </IonCardHeader>
 
             <IonCardContent class="outer-content">
 
-                <IonItem button href={`/branches/branch/${branch.id}`} onClick={goToLink}>
-                    <h2>About {branch.name}</h2>
+                <IonItem button href={`/tasks/task/${task.id}`} onClick={goToLink}>
+                    <h2>About {task.name}</h2>
                 </IonItem>
                 <br/>
 
-                <h2>This branch stocks:</h2>
+                <h2>This task stocks:</h2>
 
                 <IonList>
-                    {branchUsers.map(user => (
+                    {taskUsers.map(user => (
                         <IonItem
-                            href={`/branches/users/${user.id}`}
+                            href={`/tasks/users/${user.id}`}
                             key={user.name}
                             onClick={goToLink}
                         >
@@ -73,19 +73,19 @@ const BranchItem = ({branch, branchUsers, history}: ItemProps) => {
             <IonRow no-padding justify-content-center>
                 <IonCol text-left size="4">
                     <IonButton fill="clear" size="small" color="primary"
-                               onClick={() => window.open(`https://www.twitter.com/${branch.twitter}`, '_blank')}>
+                               onClick={() => window.open(`https://www.twitter.com/${task.twitter}`, '_blank')}>
                         <IonIcon slot="start" name="logo-twitter"></IonIcon>
                         Tweet
                     </IonButton>
                 </IonCol>
                 <IonCol text-left size="4">
-                    <IonButton fill="clear" size="small" color="primary" onClick={() => openBranchShare(branch)}>
+                    <IonButton fill="clear" size="small" color="primary" onClick={() => openTaskShare(task)}>
                         <IonIcon slot="start" name='share-alt'></IonIcon>
                         Share
                     </IonButton>
                 </IonCol>
                 <IonCol text-left size="4">
-                    <IonButton fill="clear" size="small" color="primary" onClick={() => openContact(branch)}>
+                    <IonButton fill="clear" size="small" color="primary" onClick={() => openContact(task)}>
                         <IonIcon slot="start" name='chatboxes'></IonIcon>
                         Contact
                     </IonButton>
@@ -97,27 +97,27 @@ const BranchItem = ({branch, branchUsers, history}: ItemProps) => {
 
 type ListProps = RouteComponentProps & ReturnType<typeof mapStateToProps>;
 
-const BranchList = ({branches, users, history}: ListProps) => (
+const TaskList = ({tasks, users, history}: ListProps) => (
     <>
         <IonHeader>
             <IonToolbar>
                 <IonButtons slot="start">
                     <IonMenuButton></IonMenuButton>
                 </IonButtons>
-                <IonTitle>Branches</IonTitle>
+                <IonTitle>Taskes</IonTitle>
             </IonToolbar>
         </IonHeader>
 
-        <IonContent class="outer-content branch-list">
+        <IonContent class="outer-content task-list">
             <IonList>
                 <IonGrid fixed>
                     <IonRow align-items-stretch>
-                        {branches.map((branch) =>
-                            <IonCol size="12" size-md="6" key={branch.id}>
-                                <BranchItem
-                                    branch={branch}
+                        {tasks.map((task) =>
+                            <IonCol size="12" size-md="6" key={task.id}>
+                                <TaskItem
+                                    task={task}
                                     history={history}
-                                    branchUsers={users.filter(user => user.branchIds.indexOf(branch.id) !== -1)}
+                                    taskUsers={users.filter(user => user.taskIds.indexOf(task.id) !== -1)}
                                 />
                             </IonCol>
                         )}
@@ -129,10 +129,10 @@ const BranchList = ({branches, users, history}: ListProps) => (
 );
 
 const mapStateToProps = (state: RootState) => ({
-    branches: state.branches.branches,
+    tasks: state.tasks.tasks,
     users: state.users.users
 });
 
 export default connect(
     mapStateToProps
-)(BranchList);
+)(TaskList);

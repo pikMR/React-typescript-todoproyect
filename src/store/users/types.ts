@@ -3,7 +3,7 @@ export interface User {
     name: string,
     pic: string,
     description: string,
-    branchIds: number[],
+    taskIds: number[],
     tags: string[]
   }
 

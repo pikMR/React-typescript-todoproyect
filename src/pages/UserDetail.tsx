@@ -9,12 +9,12 @@ type Props = RouteComponentProps<{ id: string, tab: string }> & ReturnType<typeo
   goBack: () => void
 };
 
-const UserDetail: React.FC<Props> = ({ users, branches, match, goBack }) => {
+const UserDetail: React.FC<Props> = ({ users, tasks, match, goBack }) => {
   const user = users.find(f => f.id === parseInt(match.params.id, 10));
   if (user == null) {
     return null;
   }
-  const userBranches = branches.filter(b => user.branchIds.indexOf(b.id) !== -1);
+  const userTasks = tasks.filter(b => user.taskIds.indexOf(b.id) !== -1);
 
   return (
     <>
@@ -34,11 +34,11 @@ const UserDetail: React.FC<Props> = ({ users, branches, match, goBack }) => {
         <div>
           <p>{user.description}</p>
 
-          <p className='branches-list-title'>Found at these branches:</p>
+          <p className='tasks-list-title'>Found at these tasks:</p>
 
-          {userBranches.map(branch => (
-            <h4 key={branch.name}>
-              {branch.name}
+          {userTasks.map(task => (
+            <h4 key={task.name}>
+              {task.name}
             </h4>
           ))}
 
@@ -50,7 +50,7 @@ const UserDetail: React.FC<Props> = ({ users, branches, match, goBack }) => {
 
 const mapStateToProps = (state: RootState) => ({
   users: state.users.users,
-  branches: state.branches.branches
+  tasks: state.tasks.tasks
 });
 
 export default connect(

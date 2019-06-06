@@ -34,7 +34,7 @@ class UsersPage extends Component<Props, State> {
     super(props);
 
     props.updateUsers();
-    props.updateBranches();
+    props.updateTasks();
 
     this.ionRefresherRef = React.createRef<HTMLIonRefresherElement>();
     this.ionFabRef = React.createRef<HTMLIonFabElement>();
@@ -189,7 +189,7 @@ const mapStateToProps = (state: RootState) => ({
 
 const mapDispatchToProps = {
   updateUsers: () => actions.users.updateUsers(),
-  updateBranches: () => actions.branches.updateBranches(),
+  updateTasks: () => actions.tasks.updateTasks(),
   setSearchText: (searchText: string) => actions.users.setSearchText(searchText),
   updateTrackFilters: (trackList: string[]) => actions.users.updateTagFilters(trackList)
 }

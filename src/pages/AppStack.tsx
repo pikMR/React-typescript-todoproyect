@@ -4,8 +4,8 @@ import About from './About';
 import { IonTabs, IonTabButton, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonPage } from '@ionic/react';
 import { Route, Redirect } from 'react-router';
 import UsersPage from "./UsersPage";
-import BranchList from "./BranchList";
-import BranchDetail from "./BranchDetail";
+import TaskList from "./TaskList";
+import TaskDetail from "./TaskDetail";
 import UserDetail from "./UserDetail";
 
 const AppStack: React.FC = () => (
@@ -24,9 +24,9 @@ const AppStack: React.FC = () => (
     <IonTabs>
       <IonRouterOutlet>
         <Route path="/:tab(users)" component={UsersPage} exact={true} />
-        <Route path="/:tab(branches)" component={BranchList} exact={true} />
-        <Route path="/:tab(branches)/branch/:id" component={BranchDetail} />
-        <Route path="/:tab(users|branches)/users/:id" component={UserDetail} />
+        <Route path="/:tab(tasks)" component={TaskList} exact={true} />
+        <Route path="/:tab(tasks)/task/:id" component={TaskDetail} />
+        <Route path="/:tab(users|tasks)/users/:id" component={UserDetail} />
         <Route path="/:tab(map)" component={MapView} />
         <Route path="/:tab(about)" component={About} />
       </IonRouterOutlet>
@@ -39,7 +39,7 @@ const AppStack: React.FC = () => (
           <IonIcon name="sunny" />
           <IonLabel>Usuarios</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="branches" href="/branches">
+        <IonTabButton tab="tasks" href="/tasks">
           <IonIcon name="planet" />
           <IonLabel>Perfil</IonLabel>
         </IonTabButton>

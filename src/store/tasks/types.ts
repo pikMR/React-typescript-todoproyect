@@ -1,4 +1,4 @@
-export interface Branch {
+export interface Task {
   id: number,
   name: string,
   profilePic: string,
@@ -9,6 +9,6 @@ export interface Branch {
   phone: string
 }
 
-export interface BranchState {
-  branches: Branch[]
+export interface TaskState {
+  tasks: Task[]
 }
