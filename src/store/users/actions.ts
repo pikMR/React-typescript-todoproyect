@@ -38,3 +38,5 @@ export const removeFavorite = createAction('users/REMOVE_FAVORITE', resolve =>
 export const updateFavoriteFilter = createAction('users/UPDATE_FAVORITE_FILTER', resolve =>
   (userIds: number[]) => resolve(userIds)
 );
+
+export const setAuth = createAction('users/SET_ROL_USER', resolve => (rol:string)=>resolve(rol));

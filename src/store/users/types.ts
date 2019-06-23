@@ -4,7 +4,8 @@ export interface User {
     pic: string,
     description: string,
     taskIds: number[],
-    tags: string[]
+    tags: string[],
+    rol: string
   }
 
   export interface UserState {
@@ -12,6 +13,7 @@ export interface User {
     tagFilters: string[];
     users: User[];
     favoriteUsers: number[];
+    rolUser : string;
   }
 
   export interface UserGroup {

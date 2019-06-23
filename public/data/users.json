@@ -4,69 +4,79 @@
   "description": "Although small in size, these beautifully coloured, cool freshwater user will surely take advantage of every bit of space in your tank and are one of the easiest user to care for. They love being in groups, so the bigger the group, the happier they will be, so don’t be afraid of keeping as many as you want.",
   "taskIds": [1, 2, 4, 5],
   "pic": "/assets/img/user/neon-tetra.jpg",
-  "tags": ["Peaceful", "Freshwater", "Hardy"]
+  "tags": ["Peaceful", "Freshwater", "Hardy"],
+  "rol" : "admin"
 }, {
   "id": 2,
   "name": "Danios",
   "description": "One of the more hardy freshwater aquarium user available for beginners are Danios. Due to their hardiness, they are the perfect user for people who don’t have much experience with setting up a tank. They can survive in a variety of different water conditions.",
   "taskIds": [2, 5],
   "pic": "/assets/img/user/danios.jpg",
-  "tags": ["Peaceful", "Freshwater", "Hardy"]
+  "tags": ["Peaceful", "Freshwater", "Hardy"],
+  "rol": "admin"
 }, {
   "id": 3,
   "name": "Platies",
   "description": "A perfect user for the community tank. Platies are a very peaceful user which will live peacefully with any other non-aggressive user. There are lots of varieties to choose from, and they come with a variety of different colours, as a result of selective breeding.",
   "taskIds": [1, 3],
   "pic": "/assets/img/user/platie.jpg",
-  "tags": ["Peaceful", "Freshwater", "Hardy"]
+  "tags": ["Peaceful", "Freshwater", "Hardy"],
+  "rol": "user"
 }, {
   "id": 4,
  "name": "Guppies",
   "description": "A colorful freshwater aquarium user that are perfect for beginners are Guppies. Although the behaviour and characteristics tend to be the same from user to user, Guppies come in a wide range of colours. They are a hardy user, and they can eat regular user flakes. However, like many user we stock, they can also eat frozen (or live) brine shrimp, blood worms, and Daphnia. The fact that Guppies can go over a week without food, shows how hardy they are.",
   "taskIds": [2, 4, 5],
   "pic": "/assets/img/user/guppy.jpg",
-  "tags": ["Peaceful", "Freshwater", "Hardy"]
+  "tags": ["Peaceful", "Freshwater", "Hardy"],
+  "rol": "user"
 }, {
   "id": 5,
   "name": "Fire Mouth Cichilid",
    "description": "Given its name because of the red colouration of its scales during breeding, the Fire Mouth Cichilid is a perfect user for new userkeepers. Although they CAN become pretty territorial during breeding season, they are relatively friendly. To be on the safe side, we recommend you keep these on their own, but if you want to mix them with other species, then make sure you provide rocks or an upturned plant pot where they can hide away in peace, to lay their eggs.",
   "taskIds": [3, 4, 5],
   "pic": "/assets/img/user/firemouth-cichilid.jpg",
-  "tags": ["Aggressive", "Freshwater", "Hardy"]
+  "tags": ["Aggressive", "Freshwater", "Hardy"],
+  "rol": "user"
 }, {
   "id": 6,
   "name": "Pearl Gourami",
   "description": "Also known as the Lace Gourami, this cool tropical freshwater user is one of the most popular Gourami user for aquarium lovers, thanks to its beautiful appearance and its hardy build. They are easy to care for and can be kept in tanks with at least 30 gallons of water, but like many other types of Gourami, they do require space at the top of the tank so they can breathe air.",
   "taskIds": [1, 3, 4],
   "pic": "/assets/img/user/pearl-gourami.jpg",
-  "tags": ["Peaceful", "Freshwater", "Hardy", "Long Living"]
+  "tags": ["Peaceful", "Freshwater", "Hardy", "Long Living"],
+  "rol": "user"
 }, {
   "id": 7,
   "name": "Tiger Pleco",
   "description": "A peaceful freshwater user, originating from South America (The Amazon River in Brazil) is the Tiger Pleco. Because they spend most of their time at the bottom of the tank, they do well with sinking food such as pellets, but they also thrive on brine shrimp and blood worms. Keeping Plecos nice and satiated will keep them from eating your tanks plants, which they can have a tendency to do.",
   "taskIds": [2, 5],
   "pic": "/assets/img/user/tiger-pleco.jpg",
-  "tags": ["Peaceful", "Freshwater", "Hardy", "Territorial", "Long Living"]
+  "tags": ["Peaceful", "Freshwater", "Hardy", "Territorial", "Long Living"],
+  "rol": "user"
 }, {
   "id": 8,
   "name": "Mollies",
   "description": "Mollies are a versatile user which can survive in both freshwater and saltwater aquariums if the changes are made gradually. They are great for beginners because they are extremely hardy, and are not as aggressive as some other tropical user. There are many to choose from, and the term ‘mollies’ is quite vague since there are so many variations of size, color and optimal tank conditions.",
   "taskIds": [1, 3],
   "pic": "/assets/img/user/mollies.jpg",
-  "tags": ["Peaceful", "Freshwater", "Saltwater", "Hardy"]
+  "tags": ["Peaceful", "Freshwater", "Saltwater", "Hardy"],
+  "rol": "user"
 }, {
   "id": 9,
   "name": "Sword Tails",
   "description": "Often touted as a ‘beginner only’ user, swordtails (Given the name due to the sword like shape of their tails) have recently begun to build a huge following of devoted fans, looking to seek out the rarest of the species. Mostly found in small streams, swordtails typically prefer a plant-based diet, so a tank full of naturally occurring algae will be perfect for them, however, they also do well with live foods from time to time. A vegetable-based flake would be the perfect food for them on a consistent basis.",
   "taskIds": [3, 4, 5],
   "pic": "/assets/img/user/sword-tails.jpg",
-  "tags": ["Peaceful", "Freshwater"]
+  "tags": ["Peaceful", "Freshwater"],
+  "rol": "user"
 }, {
   "id": 10,
   "name": "Betta",
   "description": "Although not typically recommended as a beginner user, due to their aggressive nature (They aren’t called Siamese Fighting User for nothing), the Betta user will generally be aggressive toward other Betta user, so as long as you only keep one, they should be fine. We have added the Betta to our list of best freshwater user for beginners because they are one of the most stunning tropical user you can keep. The long colourful fins will catch the eyes of anyone having a peek in your tank. Betta user are also very easy to care for, and they will eat most types of food including user flakes, blood-worms and brine shrimp. For a treat, try offering some live foods to the tank.",
   "taskIds": [1, 2, 3],
   "pic": "/assets/img/user/beta-user.jpg",
-  "tags": ["Aggressive", "Beautiful", "Freshwater"]
+  "tags": ["Aggressive", "Beautiful", "Freshwater"],
+  "rol": "user"
 }
 ]

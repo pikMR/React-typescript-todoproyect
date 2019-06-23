@@ -2,22 +2,28 @@ import React, {Component,createRef} from 'react';
 import {connect} from 'react-redux';
 import {RootState} from '../store';
 import {IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonMenuButton, IonPopover, IonTitle, IonToolbar} from '@ionic/react';
-import './About.css';
-import AboutPopover from '../components/AboutPopover';
+import './Login.css';
+import LoginPopover from '../components/LoginPopover';
 import { IonInput, IonItem, IonLabel,IonToast, IonRow, IonCol, IonAlert, IonModal,IonImg } from '@ionic/react';
+import { User } from '../store/users/types';
+import { Account } from '../store/account/types';
+import {RouteComponentProps} from 'react-router';
+import Auth from '../components/Auth';
 
-type Props = ReturnType<typeof mapStateToProps>
+//type Props = RouteComponentProps & ReturnType<typeof mapStateToProps>;
+type Props = ReturnType<typeof mapStateToProps>;
 
 type State = {
     isLogin: boolean,
-    showAlert:boolean,
-    showModal:boolean,
+    showAlert: boolean,
+    showModal: boolean,
     message: string,
     name : string,
-    password: string
+    password: string,
+    admin: boolean
 }
 
-class About extends Component<Props, State> {
+class Login extends Component<Props,State> {
   private refMail = createRef<HTMLInputElement>();
   private refPassword = createRef<HTMLInputElement>();
 
@@ -30,8 +36,9 @@ class About extends Component<Props, State> {
           showModal: false,
           message: "",
           name: "",
-          password: ""
-      };
+          password: "",
+          admin: false
+      }
   }
 
   publish(){
@@ -45,7 +52,6 @@ class About extends Component<Props, State> {
       let okmessage : boolean = (mailmessage=="");
       let okpass : boolean = (passmessage=="");
       var message = !okmessage ? mailmessage : !okpass ? passmessage : "";
-
 
       this.setState(() => ({
           message : message,
@@ -88,8 +94,19 @@ validatePass = (pass:string) => {
 }
 
     render() {
+      /*const propsAuth = {
+      id: '1',
+      name: 'paco',
+      pic: 'fernadnez',
+      description: 'l',
+      taskIds: [1,2,3],
+      tags: ["a","b","c"],
+      rol: "admin",
+      correo:"genio@gmail.com"
+    }*/
         return (
             <>
+
                 <IonAlert
   isOpen={this.state.showAlert}
   onDidDismiss={() => this.setState(() => ({ showAlert: false }))}
@@ -108,6 +125,9 @@ validatePass = (pass:string) => {
       <IonRow align-items-end>
       <IonCol>
           <IonButton expand="block" fill="outline">Fichar</IonButton>
+      </IonCol>
+      <IonCol>
+          <IonButton expand="block" fill="outline">Ver Usuarios</IonButton>
       </IonCol>
       <IonCol align-self-start>
       </IonCol>
@@ -148,7 +168,7 @@ validatePass = (pass:string) => {
 
                     <IonButton size="large" expand="block" fill="outline" onClick={this.publish}>Autenticación</IonButton>
 
-                    <div className="ion-padding about-info">
+                    <div className="ion-padding login-info">
                         <h4>Steve's User Emporium</h4>
 
                         <p>
@@ -167,8 +187,11 @@ validatePass = (pass:string) => {
     }
 }
 
-const mapStateToProps = (state: RootState) => ({});
+const mapStateToProps = (state: RootState) => ({
+  users: state.users.users
+  //account: state.account.account
+});
 
 export default connect(
     mapStateToProps
-)(About);
+)(Login);

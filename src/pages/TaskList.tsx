@@ -51,7 +51,7 @@ const TaskItem = ({task, taskUsers, history}: ItemProps) => {
             <IonCardContent class="outer-content">
 
                 <IonItem button href={`/tasks/task/${task.id}`} onClick={goToLink}>
-                    <h2>About {task.name}</h2>
+                    <h2>Login {task.name}</h2>
                 </IonItem>
                 <br/>
 

@@ -6,7 +6,7 @@ type Props = RouteComponentProps<{}> & {
   dismissPopover: () => void;
 }
 
-class AboutPopover extends Component<Props> {
+class LoginPopover extends Component<Props> {
   constructor(props: Props) {
     super(props);
   }
@@ -44,4 +44,4 @@ class AboutPopover extends Component<Props> {
   }
 }
 
-export default withRouter(AboutPopover);
+export default withRouter(LoginPopover);

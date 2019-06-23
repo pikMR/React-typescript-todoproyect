@@ -1,6 +1,6 @@
 import React from 'react';
 import MapView from './Map';
-import About from './About';
+import Login from './Login';
 import { IonTabs, IonTabButton, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonPage } from '@ionic/react';
 import { Route, Redirect } from 'react-router';
 import UsersPage from "./UsersPage";
@@ -28,10 +28,10 @@ const AppStack: React.FC = () => (
         <Route path="/:tab(tasks)/task/:id" component={TaskDetail} />
         <Route path="/:tab(users|tasks)/users/:id" component={UserDetail} />
         <Route path="/:tab(map)" component={MapView} />
-        <Route path="/:tab(about)" component={About} />
+        <Route path="/:tab(login)" component={Login} />
       </IonRouterOutlet>
       <IonTabBar slot="bottom">
-      <IonTabButton tab="about" href="/about">
+      <IonTabButton tab="login" href="/login">
         <IonIcon name="information-circle" />
         <IonLabel>Login</IonLabel>
       </IonTabButton>

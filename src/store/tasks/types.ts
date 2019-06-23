@@ -3,7 +3,7 @@ export interface Task {
   name: string,
   profilePic: string,
   twitter: string,
-  about: string,
+  login: string,
   location: string,
   email: string,
   phone: string

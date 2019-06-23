@@ -32,7 +32,7 @@ const TaskDetail: React.FunctionComponent<Props> = ({ tasks, match, goBack }) =>
         <div>
           <img src={task.profilePic} alt={task.name}/>
         </div>
-        <p>{task.about}</p>
+        <p>{task.login}</p>
         <p><strong>Address</strong>: {task.location}</p>
         <p><strong>Email</strong>: {task.email}</p>
         <p><strong>Phone</strong>: {task.phone}</p>

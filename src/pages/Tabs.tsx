@@ -8,7 +8,7 @@ export default class Tabs extends Component {
         <IonTab tab="users">User Content</IonTab>
         <IonTab tab="tasks">Tasks Content</IonTab>
         <IonTab tab="map">Map Content</IonTab>
-        <IonTab tab="about">About Content</IonTab>
+        <IonTab tab="login">Login Content</IonTab>
 
         <IonTabBar slot="bottom">
         <IonTabButton tab="login">

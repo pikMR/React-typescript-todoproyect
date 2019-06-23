@@ -6,7 +6,8 @@ const defaultState: UserState = {
   searchText: '',
   tagFilters: [],
   users: [],
-  favoriteUsers: []
+  favoriteUsers: [],
+  rolUser : "default"
 }
 
 export default (state = defaultState, action: ActionType<typeof users>): UserState => {
@@ -15,6 +16,11 @@ export default (state = defaultState, action: ActionType<typeof users>): UserSta
     return {
       ...state,
       searchText: action.payload
+    };
+  case getType(users.setAuth):
+    return{
+      ...state,
+      rolUser: state.rolUser
     };
   case getType(users.addTagFilter):
     const updatedTagFilters = state.tagFilters

@@ -1,0 +1,10 @@
+{
+  "id": 1,
+  "correo":"benjahergar@gmail.com",
+  "name": "Neon Tetra",
+  "description": "Although small in size, these beautifully coloured, cool freshwater user will surely take advantage of every bit of space in your tank and are one of the easiest user to care for. They love being in groups, so the bigger the group, the happier they will be, so don’t be afraid of keeping as many as you want.",
+  "taskIds": [1, 2, 4, 5],
+  "pic": "/assets/img/user/neon-tetra.jpg",
+  "tags": ["Peaceful", "Freshwater", "Hardy"],
+  "rol" : "admin"
+}

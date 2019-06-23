@@ -3,7 +3,7 @@
   "name": "Limpieza de Piso en Alquerias",
   "profilePic": "/assets/img/tasks/img001.jpeg",
   "twitter": "ionicframework",
-  "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  "login": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   "location": "Alquerias",
   "email": "example@example.com",
   "phone": "+1-541-754-3010"
@@ -12,7 +12,7 @@
   "name": "Matanza de cerdo",
   "profilePic": "/assets/img/tasks/img002.jpeg",
   "twitter": "ionicframework",
-  "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  "login": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   "location": "Santomer",
   "email": "charlie@example.com",
   "phone": "+1-541-754-3010"
@@ -21,7 +21,7 @@
   "name": "Obra Pública",
   "profilePic": "/assets/img/tasks/img003.jpeg",
   "twitter": "ionicframework",
-  "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit..",
+  "login": "Lorem ipsum dolor sit amet, consectetur adipiscing elit..",
   "location": "Abanilla",
   "email": "example@example.com",
   "phone": "+1-541-754-3010"
@@ -30,7 +30,7 @@
   "name": "Vigilancia en parking",
   "profilePic": "/assets/img/tasks/img004.jpeg",
   "twitter": "ionicframework",
-  "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  "login": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   "location": "Calle Correos",
   "email": "example@example.com",
   "phone": "+1-541-754-3010"
@@ -39,7 +39,7 @@
   "name": "Cierre de Sexhop",
   "profilePic": "/assets/img/tasks/img005.jpeg",
   "twitter": "ionicframework",
-  "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  "login": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   "location": "Totana",
   "email": "example@example.com",
   "phone": "+1-541-754-3010"
