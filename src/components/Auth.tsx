@@ -5,36 +5,28 @@ import {RootState} from '../store';
 import {IonBackButton, IonButtons, IonContent, IonHeader, IonTitle, IonToolbar} from '@ionic/react';
 import { Account } from '../store/account/types'
 
-type Props = RouteComponentProps<{}> & ReturnType<typeof mapStateToProps> & {
-  id: string;
+type ItemProps = {
+  ultimoElemento: Account;
 }
 
-const Auth: React.FC<Props> = (account) => {
-  if (account == null) {
-    return null;
+const Auth = (ultimoElemento : ItemProps) => {
+
+  let _ultimo = ultimoElemento;
+  if (_ultimo.ultimoElemento == undefined) {
+    return (<></>);
   }
 
-  let isAdmin = (account.id === "1");
-  let esAdmin = isAdmin ? " es admin" : " no es admin";
-  //const userTasks = tasks.filter(b => user.taskIds.indexOf(b.id) !== -1);
+  let correo = _ultimo.ultimoElemento.correo;
+  let esAdmin = "es_" + _ultimo.ultimoElemento.rol;
 
   return (
-    <>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>{account.id} </IonTitle>
+          <IonTitle>{correo}</IonTitle>
           <h4>{esAdmin}</h4>
         </IonToolbar>
       </IonHeader>
-    </>
   );
 }
 
-const mapStateToProps = (state: RootState) => ({
-  // type : AccountState -> accounts
-  account: state.account.accounts
-});
-
-export default connect(
-  mapStateToProps
-)(Auth)
+export default Auth;

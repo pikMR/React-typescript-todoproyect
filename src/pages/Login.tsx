@@ -28,9 +28,9 @@ class Login extends Component<Props,State> {
 
   constructor(props: Props) {
       super(props);
-      props.updateAccounts();
 
-      //this.publish = this.publish.bind(this);
+      var _cuentas = props.updateAccounts();
+
       this.state = {
           isLogin: false,
           showAlert : false,
@@ -43,9 +43,6 @@ class Login extends Component<Props,State> {
   }
 
   publicar = () => {
-    // #1
-    //this.refs.rname.value
-    //this.refs.rpw.value
     var currentmail = this.refMail.current;
     var currentpass = this.refPassword.current;
 
@@ -58,8 +55,8 @@ class Login extends Component<Props,State> {
       let authlogin : boolean = false;
 
       if(okpass && okmessage){
-        this.props.updateAccounts();
-        //actions.account.updateAccounts();
+        //let = this.props.accounts;
+
       }
 
       this.setState(() => ({
@@ -76,11 +73,6 @@ class Login extends Component<Props,State> {
           isLogin : false
       }));
     }
-
-  }
-
-  obtenerListaCuentas = () =>{
-
 
   }
 
@@ -109,16 +101,6 @@ validatePass = (pass:string) => {
 }
 
     render() {
-      /*const propsAuth = {
-      id: '1',
-      name: 'paco',
-      pic: 'fernadnez',
-      description: 'l',
-      taskIds: [1,2,3],
-      tags: ["a","b","c"],
-      rol: "admin",
-      correo:"genio@gmail.com"
-    }*/
         return (
             <>
 
@@ -150,6 +132,7 @@ validatePass = (pass:string) => {
           <IonButton expand="block" fill="outline">Ver Tareas</IonButton>
       </IonCol>
       <IonCol>
+      	<Auth ultimoElemento={this.props.accounts[this.props.accounts.length-1]} />
       </IonCol>
     </IonRow>
     </div>
@@ -203,7 +186,7 @@ validatePass = (pass:string) => {
 }
 
 const mapStateToProps = (state: RootState) => ({
-  //accounts: state.account.accounts
+  accounts: state.account.accounts
 });
 
 const mapDispatchToProps = {
