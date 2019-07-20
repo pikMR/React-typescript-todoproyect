@@ -1,17 +1,16 @@
 import React, {Component,createRef} from 'react';
 import {connect} from 'react-redux';
-import {RootState} from '../store';
+import { RootState, actions } from '../store';
 import {IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonMenuButton, IonPopover, IonTitle, IonToolbar} from '@ionic/react';
 import './Login.css';
 import LoginPopover from '../components/LoginPopover';
 import { IonInput, IonItem, IonLabel,IonToast, IonRow, IonCol, IonAlert, IonModal,IonImg } from '@ionic/react';
-import { User } from '../store/users/types';
 import { Account } from '../store/account/types';
 import {RouteComponentProps} from 'react-router';
 import Auth from '../components/Auth';
 
 //type Props = RouteComponentProps & ReturnType<typeof mapStateToProps>;
-type Props = ReturnType<typeof mapStateToProps>;
+type Props = RouteComponentProps<{}> & typeof mapDispatchToProps & ReturnType<typeof mapStateToProps>;
 
 type State = {
     isLogin: boolean,
@@ -29,7 +28,9 @@ class Login extends Component<Props,State> {
 
   constructor(props: Props) {
       super(props);
-      this.publish = this.publish.bind(this);
+      props.updateAccounts();
+
+      //this.publish = this.publish.bind(this);
       this.state = {
           isLogin: false,
           showAlert : false,
@@ -41,23 +42,31 @@ class Login extends Component<Props,State> {
       }
   }
 
-  publish(){
+  publicar = () => {
+    // #1
     //this.refs.rname.value
     //this.refs.rpw.value
     var currentmail = this.refMail.current;
     var currentpass = this.refPassword.current;
+
     if(currentmail && currentpass){
       let mailmessage : string = this.validateEmail(currentmail.value);
       let passmessage : string = this.validatePass(currentpass.value);
       let okmessage : boolean = (mailmessage=="");
       let okpass : boolean = (passmessage=="");
       var message = !okmessage ? mailmessage : !okpass ? passmessage : "";
+      let authlogin : boolean = false;
+
+      if(okpass && okmessage){
+        this.props.updateAccounts();
+        //actions.account.updateAccounts();
+      }
 
       this.setState(() => ({
           message : message,
           showModal : (okpass && okmessage),
-          showAlert : (!okpass || !okmessage),
-          isLogin : (okpass && okmessage)
+          showAlert : (!okpass || !okmessage), // uno de los 2 contiene un mensaje de error
+          isLogin : (okpass && okmessage) // los 2 condicinales nos dan ok
       }));
     }else{
       this.setState(() => ({
@@ -67,6 +76,12 @@ class Login extends Component<Props,State> {
           isLogin : false
       }));
     }
+
+  }
+
+  obtenerListaCuentas = () =>{
+
+
   }
 
   validateEmail = (email : string) => {
@@ -166,7 +181,7 @@ validatePass = (pass:string) => {
                       className="inpution"
                       />
 
-                    <IonButton size="large" expand="block" fill="outline" onClick={this.publish}>Autenticación</IonButton>
+                    <IonButton size="large" expand="block" fill="outline" onClick={this.publicar}>Autenticación</IonButton>
 
                     <div className="ion-padding login-info">
                         <h4>Steve's User Emporium</h4>
@@ -188,10 +203,15 @@ validatePass = (pass:string) => {
 }
 
 const mapStateToProps = (state: RootState) => ({
-  users: state.users.users
-  //account: state.account.account
+  //accounts: state.account.accounts
 });
 
+const mapDispatchToProps = {
+  // actions.account se debe referenciar en el index.ts !!
+  updateAccounts: () => actions.account.updateAccounts()
+}
+
 export default connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(Login);

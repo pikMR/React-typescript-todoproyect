@@ -1,21 +1,27 @@
-import * as account from './actions';
+import * as accounts from './actions';
 import { Account, AccountState } from './types';
 import { ActionType, getType } from 'typesafe-actions';
 import { Middleware } from 'redux';
 
-export const fetchAccountMiddleware: Middleware<{}, AccountState> = ({ getState }) => next => async (action: ActionType<typeof account>) => {
+export const fetchAccountMiddleware: Middleware<{}, AccountState> = ({ getState }) => next => async (action: ActionType<typeof accounts>) => {
+  debugger
+  console.log("1............ fetchAccountMiddleware .........");
   next(action);
-
-  if (action.type != getType(account.updateAccount)) {
+  //#3.1
+  if (action.type != getType(accounts.updateAccounts)) {
     return;
   }
 
-  next(account.fetchAccount.request());
+  next(accounts.fetchAccounts.request());
   try {
+    console.log("22............ fetchAccountMiddleware .........");
+    //#3.3
     const response = await fetch('/data/accountadmin.json');
-    const sessionList: Account = await response.json();
-    next(account.fetchAccount.success(sessionList));
+    const accountList: Account[] = await response.json();
+    next(accounts.fetchAccounts.success(accountList));
   } catch (e) {
-    next(account.fetchAccount.failure(e));
+    console.log("3............ fetchAccountMiddleware .........");
+    //#3.4
+    next(accounts.fetchAccounts.failure(e));
   }
 };

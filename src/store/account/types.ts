@@ -1,16 +1,14 @@
 export interface Account {
   id: number,
-  name: string,
-  pic: string,
+  correo:string,
   description: string,
   taskIds: number[],
+  pic: string,
   tags: string[],
   rol: string,
-  correo:string
+  dateUpdate: string
 }
 
 export interface AccountState {
-  searchText: string;
-  tagFilters: string[];
-  account: Account;
+  accounts: Account[];
 }

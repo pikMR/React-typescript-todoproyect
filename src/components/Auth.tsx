@@ -31,7 +31,8 @@ const Auth: React.FC<Props> = (account) => {
 }
 
 const mapStateToProps = (state: RootState) => ({
-  account: state.account.account
+  // type : AccountState -> accounts
+  account: state.account.accounts
 });
 
 export default connect(

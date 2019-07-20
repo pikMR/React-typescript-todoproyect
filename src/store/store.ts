@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, compose, Middleware } from 'redux';
 import { fetchLocationsMiddleware } from './locations/middleware';
 import { fetchUsersMiddleware } from './users/middleware';
 import { fetchTasksMiddleware } from './tasks/middleware';
+import { fetchAccountMiddleware } from './account/middleware';
 
 import rootReducer from './root-reducer';
 
@@ -10,7 +11,8 @@ const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ||
 const middlewares: Middleware[] = [
   fetchLocationsMiddleware,
   fetchUsersMiddleware,
-  fetchTasksMiddleware
+  fetchTasksMiddleware,
+  fetchAccountMiddleware
 ];
 
 function configureStore(initialState?: {}) {
