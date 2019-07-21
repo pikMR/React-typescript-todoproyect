@@ -1,30 +1,31 @@
 import React, { Component } from 'react';
 import { IonIcon, IonTabs, IonTab, IonTabBar, IonTabButton, IonLabel } from '@ionic/react';
 
+// no se usa.
 export default class Tabs extends Component {
   render() {
     return (
       <IonTabs>
-        <IonTab tab="users">User Content</IonTab>
-        <IonTab tab="tasks">Tasks Content</IonTab>
-        <IonTab tab="map">Map Content</IonTab>
-        <IonTab tab="login">Login Content</IonTab>
+        <IonTab tab="users">User Content2</IonTab>
+        <IonTab tab="tasks">Tasks Content2</IonTab>
+        <IonTab tab="map">Map Content2</IonTab>
+        <IonTab tab="login">Login Content2</IonTab>
 
         <IonTabBar slot="bottom">
         <IonTabButton tab="login">
-          <IonLabel>Acceso</IonLabel>
+          <IonLabel>Acceso2</IonLabel>
           <IonIcon name="login"></IonIcon>
         </IonTabButton>
           <IonTabButton tab="users">
-            <IonLabel>Usuarios</IonLabel>
+            <IonLabel>Usuarios2</IonLabel>
             <IonIcon name="users"></IonIcon>
           </IonTabButton>
           <IonTabButton tab="tasks">
-            <IonLabel>Mi Perfil</IonLabel>
+            <IonLabel>Mi Perfil2</IonLabel>
             <IonIcon name="tasks"></IonIcon>
           </IonTabButton>
           <IonTabButton tab="map">
-            <IonLabel>Mapa</IonLabel>
+            <IonLabel>Mapa2</IonLabel>
             <IonIcon name="map"></IonIcon>
           </IonTabButton>
 

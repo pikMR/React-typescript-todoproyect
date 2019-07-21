@@ -29,7 +29,7 @@ class Login extends Component<Props,State> {
   constructor(props: Props) {
       super(props);
 
-      var _cuentas = props.updateAccounts();
+    //  var _cuentas = props.updateAccounts();
 
       this.state = {
           isLogin: false,
@@ -56,7 +56,7 @@ class Login extends Component<Props,State> {
 
       if(okpass && okmessage){
         //let = this.props.accounts;
-
+        this.props.updateAccounts();
       }
 
       this.setState(() => ({
